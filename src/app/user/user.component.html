@@ -1,0 +1,58 @@
+<h1>Angular Workshop</h1>
+<ul>
+  <li>
+    <b>Name:</b> {{name}}</li>
+  <li>
+    <b>Age:</b> {{age}}</li>
+  <li>
+    <b>Email:</b> {{email}}</li>
+  <li>
+    <b>Address:</b> {{address.street}}, {{address.city}}, {{address.province}}, {{address.postcode}}</li>
+</ul>
+
+<h2>Edit Profile</h2>
+<button (click)=toggleEdit()>Edit</button>
+<div *ngIf="isEditable == true">
+  <form>
+    <div>
+      <label for="name">
+        <b>Name: </b>
+      </label>
+      <input type="text" [(ngModel)]="name" name="name">
+    </div>
+
+    <div>
+      <label for="age">
+        <b>Age: </b>
+      </label>
+      <input type="text" [(ngModel)]="age" name="age">
+    </div>
+
+    <div>
+      <label for="email">
+        <b>Email: </b>
+      </label>
+      <input type="text" [(ngModel)]="email" name="email">
+    </div>
+
+  </form>
+</div>
+<h2>Skill</h2>
+<form (submit)="addSkill(skills.value)">
+  <div>
+    <label for="skills">Skill: </label>
+    <input type="text" #skills placeholder="Add your skill">
+  </div>
+</form>
+
+<ol>
+  <li *ngFor="let skills of skill">{{skills}}
+    <button (click)="removeSkill(skills)">X</button>
+  </li>
+</ol>
+
+<h2>Todo List</h2>
+<ul>
+  <li *ngFor="let todo of todoList" style="list-style-type: none">
+    <b>{{todo.id}}</b> {{todo.title}}</li>
+</ul>
